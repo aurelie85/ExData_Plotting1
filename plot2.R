@@ -12,12 +12,14 @@ data <- read.table("household_power_consumption.txt",
 subdata <- data[data$Date %in% c("1/2/2007", "2/2/2007"),]
 #head(subdata)
 
+#Convert the Date and Time variables to Date/Time
 subdata$date.time <- strptime(paste(subdata$Date,subdata$Time,sep=" "),"%d/%m/%Y %H:%M:%S")
 str(subdata)
 
-#Make the beautiful plot.
-#Set the local system time.
+
+#Set the local system time. Maybe you don't have to do this if your local time is already in english.
 Sys.setlocale(category = "LC_ALL", locale = "C")
+#Make the beautiful plot.
 plot(subdata$date.time,subdata$Global_active_power,type="n",
      ylab = "Global Active Power (kilowatts)",
      xlab = "")
