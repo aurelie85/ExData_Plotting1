@@ -20,10 +20,9 @@ str(subdata)
 #Set the local system time. Maybe you don't have to do this if your local time is already in english.
 Sys.setlocale(category = "LC_ALL", locale = "C")
 #Make the beautiful plot.
-plot(subdata$date.time,subdata$Global_active_power,type="n",
+plot(subdata$date.time,subdata$Global_active_power,type="l",
      ylab = "Global Active Power (kilowatts)",
      xlab = "")
-lines(subdata$date.time,subdata$Global_active_power)
 #Copy the graphics contents of the current device.
 dev.copy(png,file="plot2.png", width = 480, height = 480, units = "px")
 dev.off()
