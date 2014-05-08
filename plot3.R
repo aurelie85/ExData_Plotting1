@@ -17,13 +17,22 @@ subdata$date.time <- strptime(paste(subdata$Date,subdata$Time,sep=" "),"%d/%m/%Y
 str(subdata)
 
 
-#Set the local system time. Maybe you don't have to do this if your local time is already in english.
+#Set the local system time.
 Sys.setlocale(category = "LC_ALL", locale = "C")
-#Make the beautiful plot.
-png(filename = "plot2.png",
+#Make the beautiful plot. First make the plot with one line and then add all the lines that you want, 
+#with different colors.
+png(filename = "plot3.png",
     width = 480, height = 480, units = "px", bg = "transparent")
-plot(subdata$date.time,subdata$Global_active_power,type="l",
-     ylab = "Global Active Power (kilowatts)",
-     xlab = "")
+plot(subdata$date.time,subdata$Sub_metering_1,
+     type="l",
+     ylab = "Energy sub metering",
+     xlab = "",
+     col = "black")
+lines(subdata$date.time,subdata$Sub_metering_2, col = "red")
+lines(subdata$date.time,subdata$Sub_metering_3, col = "blue")
+#add a legend.
+legend("topright", lty = 1, col = c("black", "red", "blue"), 
+       legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+
 #Copy the graphics contents of the current device.
 dev.off()
