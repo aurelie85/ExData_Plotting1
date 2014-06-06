@@ -1,3 +1,4 @@
+## Plot 3
 getwd()
 setwd("~/Coursera/Data Science Specialization/4. Exploratory Data Analysis/Assignment/ExData_Plotting1")
 
